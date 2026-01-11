@@ -31,7 +31,7 @@ services:
       n8n-net:
 
   n8n_vectordb:
-    build: n8n/vectordb
+    build: vectordb
     container_name: n8n_vectordb
     restart: unless-stopped
     environment:
