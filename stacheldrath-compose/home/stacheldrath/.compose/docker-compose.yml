@@ -10,7 +10,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/stacheldrath/Desktop/0xDEADBEEF/documents
+      device: /home/stacheldrath/Desktop/0xDEADBEEF/evidence
 
 networks:
   stacheldrath-net:

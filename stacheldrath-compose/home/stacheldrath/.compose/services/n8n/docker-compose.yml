@@ -5,6 +5,12 @@ volumes:
       type: none
       o: bind
       device: /home/stacheldrath/Desktop/0xDEADBEEF/n8n/database
+  n8n_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/stacheldrath/Desktop/0xDEADBEEF/n8n/data
 
 networks:
   n8n-net:
@@ -74,7 +80,7 @@ services:
     links:
       - n8n_database
     volumes:
-      - n8n_database:/home/node/.n8n
+      - n8n_data:/home/node/.n8n
       - evidence:/home/node/.n8n-files/documents
     networks:
       - stacheldrath-net

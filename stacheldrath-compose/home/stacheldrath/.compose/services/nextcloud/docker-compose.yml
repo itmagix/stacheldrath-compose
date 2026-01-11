@@ -18,7 +18,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/stacheldrath/Desktop/0xDEADBEEF/nextcloud/database/config
+      device: /home/stacheldrath/Desktop/0xDEADBEEF/nextcloud/database
 
 services:
   nextcloud_app:
