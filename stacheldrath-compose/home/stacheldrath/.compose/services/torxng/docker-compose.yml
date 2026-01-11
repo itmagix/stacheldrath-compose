@@ -1,0 +1,57 @@
+networks:
+  torxng-net:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 13.37.69.0/24
+         gateway: 13.37.69.1
+         ip_range: 13.37.69.16/28
+
+services:
+  torxng_web:
+    image: nginx:latest
+    container_name: torxng_web
+    depends_on:
+      - torxng_tor
+      - torxng_engine
+    ports:
+      - 8081:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
+    networks:
+      stacheldrath-net:
+      torxng-net:
+        ipv4_address: 13.37.69.3
+
+  torxng_engine:
+    build: ./searxng
+    hostname: torxng_engine
+    depends_on:
+      - torxng_tor
+    environment:
+      SEARXNG_BIND_ADDRESS: 0.0.0.0
+      SEARXNG_PORT: 1337
+      SEARXNG_SETTINGS_PATH: "/etc/searxng/settings.yml"
+      SEARXNG_DEBUG: false
+    deploy:
+      mode: replicated
+      replicas: 10
+    volumes:
+      - ./searxng/settings.yml:/etc/searxng/settings.yml:ro
+      - ./searxng/limiter.toml:/etc/searxng/limiter.toml:ro
+    restart: unless-stopped
+    networks:
+      stacheldrath-net:
+      torxng-net:
+
+  torxng_tor:
+    build: ./tor
+    container_name: torxng_tor
+    volumes:
+      - ./tor/torrc:/etc/tor/torrc:ro
+      - ./tor/torsocks.conf:/etc/tor/torsocks.conf:ro
+    restart: unless-stopped
+    networks:
+      torxng-net:
+        ipv4_address: 13.37.69.2

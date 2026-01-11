@@ -1,0 +1,21 @@
+events { }
+
+http {
+    # This is backend server, in this case referencing to the node domain, which is equal to the service name (see docker-compose.yml -> node)
+    upstream torxng_backend {
+        server torxng_engine:1337;
+    }
+
+    server {
+        listen 80;
+        # Feel free to adjust the max_body_size, default is 2M which might be too low, compared to the pure Node.js service
+        client_max_body_size 20M;
+
+        location / {
+            proxy_pass http://torxng_backend;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+}
