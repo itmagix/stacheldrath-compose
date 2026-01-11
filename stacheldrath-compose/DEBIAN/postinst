@@ -21,6 +21,7 @@ else
     echo "Docker.IO and docker-compose are already installed"
 fi
 
+echo "Starting Stacheldrath Linux compose stack"
 docker-compose -f /home/stacheldrath/.compose/docker-compose.yml up -d
 
 exit 0
