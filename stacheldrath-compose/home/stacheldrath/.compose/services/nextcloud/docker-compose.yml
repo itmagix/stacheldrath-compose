@@ -60,3 +60,6 @@ services:
     networks:
       - nextcloud-net
     restart: unless-stopped
+
+networks:
+  nextcloud-net:
