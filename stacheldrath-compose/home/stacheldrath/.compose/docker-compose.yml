@@ -20,6 +20,11 @@ services:
   stacheldrath_proxy:
     image: nginx:latest
     container_name: stacheldrath_proxy
+    ports:
+      - 81:81
+      - 6969:80
     depends_on:
       - nextcloud_app
       - n8n_app
+    networks:
+      - stacheldrath-net
