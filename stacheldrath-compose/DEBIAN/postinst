@@ -2,26 +2,10 @@
 
 set -e
 
-echo "Installing Docker if not already installed..."
+echo "Add Stacheldrath Linux default user to docker group..."
+gpasswd -a stacheldrath docker
 
-# Check if curl is installed
-if ! command -v docker &> /dev/null; then
-    echo "Docker not found, installing..."
-    if command -v apt-get &> /dev/null; then
-        apt-get update
-        apt-get install -y docker.io docker-compose
-    elif command -v apt &> /dev/null; then
-        apt update
-        apt install -y docker.io docker-compose
-    else
-        echo "Error: Cannot install Docker. Neither apt-get nor apt found."
-        exit 1
-    fi
-else
-    echo "Docker.IO and docker-compose are already installed"
-fi
-
-echo "Starting Stacheldrath Linux compose stack"
+echo "Starting Stacheldrath Linux compose stack..."
 docker-compose -f /home/stacheldrath/.compose/docker-compose.yml up -d
 
 exit 0
