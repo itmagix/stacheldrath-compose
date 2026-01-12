@@ -3,6 +3,8 @@ FROM kalilinux/kali-rolling:latest
 RUN apt update
 
 RUN apt install -y \
+    kali-tools-social-engineering \
+    kali-tools-forensics \
     kali-tools-fuzzing \
     spiderfoot \
     theharvester \
