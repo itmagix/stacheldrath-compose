@@ -1,6 +1,7 @@
 include:
   - services/nextcloud/docker-compose.yml
   - services/n8n/docker-compose.yml
+  - services/kali/docker-compose.yml
   - services/torxng/docker-compose.yml
 #  - services/osm/docker-compose.yml
 

@@ -1,0 +1,24 @@
+volumes:
+  kali_root:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/stacheldrath/Desktop/0xDEADBEEF/kali
+
+networks:
+  kali-net:
+
+services:
+  kali:
+    image: kalilinux/kali-rolling:latest
+    container_name: kali
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      - kali_root:/root
+      - evidence:/root/Documents
+    networks:
+      - stacheldrath-net
+      - kali-net
