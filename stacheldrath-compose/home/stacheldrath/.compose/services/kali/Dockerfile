@@ -10,6 +10,7 @@ RUN apt install -y \
     emailharvester \
     nikto \
     zmap \
+    nmap \
     wpscan \
     gobuster \
     masscan \
