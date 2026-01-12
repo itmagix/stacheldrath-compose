@@ -2,7 +2,6 @@ FROM kalilinux/kali-rolling:latest
 
 RUN apt update && \
     apt install -y && \
-    kali-tools-fuzzing && \
     spiderfoot && \
     theharvester && \
     emailharvester && \
