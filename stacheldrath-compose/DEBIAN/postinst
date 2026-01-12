@@ -2,6 +2,9 @@
 
 set -e
 
+echo "Set permissions to stacheldrath user..."
+chown -R /home/stacheldrath/Desktop/0xDEADBEEF
+
 echo "Add Stacheldrath Linux default user to docker group..."
 gpasswd -a stacheldrath docker
 
