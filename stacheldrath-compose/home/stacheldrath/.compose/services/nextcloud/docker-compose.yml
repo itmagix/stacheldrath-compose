@@ -4,14 +4,14 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/stacheldrath/Desktop/0xDEADBEEF/nextcloud/app/config
+      device: /home/stacheldrath/Desktop/0xDEADBEEF/nextcloud/config
 
   nextcloud_data:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/stacheldrath/Desktop/0xDEADBEEF/nextcloud/app/data
+      device: /home/stacheldrath/Desktop/0xDEADBEEF/nextcloud/data
 
   nextcloud_database_config:
     driver: local
