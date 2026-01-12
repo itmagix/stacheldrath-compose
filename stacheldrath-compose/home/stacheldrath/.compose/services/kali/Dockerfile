@@ -15,7 +15,6 @@ RUN apt install -y \
     burpsuite \
     gobuster \
     masscan \
-    netcat \
     john-data \
     recon-ng \
     wireshark \
