@@ -27,4 +27,4 @@ services:
       - nextcloud_app
       - n8n_app
     networks:
-      - stacheldrath-net
+      stacheldrath-net:
