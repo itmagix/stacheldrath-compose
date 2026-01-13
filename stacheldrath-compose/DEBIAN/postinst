@@ -3,7 +3,6 @@
 set -e
 
 echo "Set permissions to stacheldrath user..."
-chown stacheldrath:stacheldrath -R /home/stacheldrath/Desktop/0xDEADBEEF
 chown stacheldrath:stacheldrath -R /home/stacheldrath/.compose
 
 echo "Add Stacheldrath Linux default user to docker group..."
