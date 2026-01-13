@@ -2,6 +2,13 @@
 
 set -e
 
+echo "Create directory structure..."
+mkdir -p /home/stacheldrath/Desktop/0xDEADBEEF/n8n/data
+mkdir -p /home/stacheldrath/Desktop/0xDEADBEEF/n8n/database
+mkdir -p /home/stacheldrath/Desktop/0xDEADBEEF/nextcloud/config
+mkdir -p /home/stacheldrath/Desktop/0xDEADBEEF/nextcloud/data
+mkdir -p /home/stacheldrath/Desktop/0xDEADBEEF/nextcloud/database
+
 echo "Set permissions to stacheldrath user..."
 chown stacheldrath:stacheldrath -R /home/stacheldrath/.compose
 
