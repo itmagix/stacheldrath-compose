@@ -10,15 +10,24 @@ networks:
   kali-net:
 
 services:
-  kali:
-    build: .
-    container_name: kali
+  kali_code:
+    build: ./kali_code
+    container_name: kali_code
     tty: true
     stdin_open: true
     restart: unless-stopped
     volumes:
       - kali_root:/root
       - evidence:/root/Documents
+    networks:
+      - kali-net
+
+  kali_mcp:
+    build: ./kali_mcp
+    container_name: kali_mcp
+    restart: unless-stopped
+    depends_on:
+      - kali_code
     networks:
       - stacheldrath-net
       - kali-net
