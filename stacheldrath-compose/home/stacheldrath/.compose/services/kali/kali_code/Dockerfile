@@ -28,16 +28,18 @@ RUN apt update
 #    wordlists && \
 #    apt clean
 
-RUN apt install -y git python3-venv
+RUN apt install -y wget git python3-venv
 
 WORKDIR /app
 
-RUN HOME=/app git clone https://github.com/Wh0am123/MCP-Kali-Server.git
+RUN git clone https://github.com/Wh0am123/MCP-Kali-Server.git
 
 RUN cd MCP-Kali-Server && \
     python3 -m venv .venv && \
     /app/MCP-Kali-Server/.venv/bin/python -m pip install --no-cache -r requirements.txt
 
-RUN curl -fsSL https://opencode.ai/install | bash
+RUN curl "https://opencode.ai/install" | bash
+
+RUN apt autoremove -y git wget
 
 ENTRYPOINT ["MCP-Kali-Server/.venv/bin/python", "kali_server.py", "--debug"]
