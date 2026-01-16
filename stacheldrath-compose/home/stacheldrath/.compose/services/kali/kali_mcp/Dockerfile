@@ -1,4 +1,4 @@
-FROM python:trixie
+FROM python:trixie AS builder
 
 WORKDIR /app
 
@@ -8,4 +8,9 @@ RUN cd MCP-Kali-Server && \
     python3 -m venv .venv && \
     /app/MCP-Kali-Server/.venv/bin/python -m pip install --no-cache -r requirements.txt
 
-CMD ["MCP-Kali-server/.venv/bin/python", "mcp_server.py", "--server", "http://kali:5000", "--timeout", "3600"]
+FROM python:slim-trixie AS image
+
+COPY --from=builder /app /app
+
+#ENTRYPOINT ["/app/MCP-Kali-server/.venv/bin/python /app/MCP-Kali-server/mcp_server.py", "--server", "http://kali:5000", "--timeout", "3600"]
+ENTRYPOINT /app/MCP-Kali-server/.venv/bin/python /app/MCP-Kali-server/mcp_server.py --server http://kali:5000 --timeout 3600

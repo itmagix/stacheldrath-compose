@@ -16,4 +16,8 @@ RUN curl -fsSL https://opencode.ai/install | bash
 
 RUN apt autoremove -y git curl
 
-CMD ["MCP-Kali-Server/.venv/bin/python", "MCP-Kali-Server/kali_server.py", "--debug"]
+#CMD ["PATH=$PATH:/root/.opencode/bin", "MCP-Kali-Server/.venv/bin/python", "MCP-Kali-Server/kali_server.py", "--debug"]
+
+ENV PATH="$PATH:/root/.opencode/bin"
+
+#CMD ["/root/.opencode/bin/opencode"]
