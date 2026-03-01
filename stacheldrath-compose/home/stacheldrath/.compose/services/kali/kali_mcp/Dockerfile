@@ -12,5 +12,4 @@ FROM python:slim-trixie AS image
 
 COPY --from=builder /app /app
 
-#ENTRYPOINT ["/app/MCP-Kali-server/.venv/bin/python /app/MCP-Kali-server/mcp_server.py", "--server", "http://kali:5000", "--timeout", "3600"]
-ENTRYPOINT /app/MCP-Kali-server/.venv/bin/python /app/MCP-Kali-server/mcp_server.py --server http://kali:5000 --timeout 3600
+ENTRYPOINT /app/MCP-Kali-server/.venv/bin/python /app/MCP-Kali-server/client.py --server http://kali:5000 --timeout 3600 --debug
