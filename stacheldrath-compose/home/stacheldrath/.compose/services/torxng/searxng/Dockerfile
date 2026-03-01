@@ -10,7 +10,8 @@ RUN apt update
 # Install required packages
 RUN apt install -y \
     python3-dev python3-pip python3-babel python3-venv python-is-python3 wget curl \
-    uwsgi uwsgi-plugin-python3 git build-essential libxslt-dev zlib1g-dev libffi-dev libssl-dev
+    uwsgi uwsgi-plugin-python3 git build-essential libxslt-dev zlib1g-dev libffi-dev \
+    libssl-dev
 
 # Install proxychains for TOR connection validation
 RUN apt install -y \
@@ -65,7 +66,7 @@ RUN python3 -m venv venv
 
 ENV PATH="/usr/local/searxng/searxng-src/bin:$PATH"
 
-RUN ./venv/bin/python -m pip install --no-cache --upgrade pip setuptools wheel pyyaml msgspec 
+RUN ./venv/bin/python -m pip install --no-cache --upgrade pip setuptools wheel pyyaml msgspec typing-extensions
 RUN ./venv/bin/python -m pip install --no-cache --use-pep517 --no-build-isolation -e .
 
 # Expose port
