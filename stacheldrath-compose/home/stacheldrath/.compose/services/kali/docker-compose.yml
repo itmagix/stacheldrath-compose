@@ -19,6 +19,7 @@ services:
     volumes:
       - kali_root:/root
       - evidence:/root/Documents
+    command: opencode serve
     networks:
       - kali-net
 
